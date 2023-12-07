@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
+  # for Cross-site Request Forgery
+  skip_before_action :verify_authenticity_token 
+
 
   # GET /posts or /posts.json
   def index
@@ -53,7 +56,8 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
-      format.json { head :no_content }
+      # to avoid for frontend to throw an error, also return in json format
+      format.json { render json: Post.all, status: :ok }
     end
   end
 
@@ -65,6 +69,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, id:)
     end
 end
