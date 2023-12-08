@@ -23,7 +23,9 @@ end
 worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
-port ENV.fetch("PORT") { 3000 }
+## changed to 3001 bc collides with frontend server port 
+# docs: https://dev.to/subash_ravichandran/rails-default-port-5a7e#:~:text=rb%20.,the%20port%203000%20by%20default.&text=That's%20it.,will%20be%20used%20by%20rails.
+port ENV.fetch("PORT") { 3001 }
 
 # Specifies the `environment` that Puma will run in.
 environment ENV.fetch("RAILS_ENV") { "development" }
