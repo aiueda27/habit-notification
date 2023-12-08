@@ -9,6 +9,7 @@ import {
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../app/store'
 import Post from './Post'
+import PostForm from './PostForm'
 
 function Posts() {
   const posts = useAppSelector(selectPosts)
@@ -27,7 +28,7 @@ function Posts() {
       ) : (
         <div>
           <h3>{status}</h3>
-          {/* TODO: insert form */}
+          <PostForm />
           {posts &&
             posts.length > 0 &&
             posts.map((post) => {
