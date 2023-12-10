@@ -1,8 +1,4 @@
-import {
-  PostDeleteData,
-  PostFormData,
-  PostsState,
-} from './PostSlice'
+import { PostDeleteData, PostFormData, PostsState } from './PostSlice'
 
 const API_URL = 'http://localhost:3001'
 
@@ -35,6 +31,24 @@ export const createPost = async (payload: PostFormData) => {
     .then((response) => response.json())
     .catch((error) => {
       console.log('error :>> ', error)
+      return {} as PostsState
+    })
+}
+
+export const updatePost = async (payload: PostFormData) => {
+  const post = payload.post
+  return fetch(`${API_URL}/posts/${post.id}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      post,
+    }),
+  })
+    .then((response) => response.json())
+    .catch((error) => {
+      console.log('error  :>> ', error)
       return {} as PostsState
     })
 }
