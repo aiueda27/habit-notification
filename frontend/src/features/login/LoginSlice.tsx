@@ -32,7 +32,11 @@ export const findUserAsync = createAsyncThunk(
   async (payload: LoginData) => {
     const response = await findUser(payload)
 
-    console.log('response :>> ', response)
+    // TODO: this is not the best way to store token, just uding it alternatively.
+    // TODO: add refresh token to local storage, also logout feature to clear the local storage
+    if (response.token) {
+      localStorage.setItem('accessToken', response.token)
+    }
     return response
   }
 )

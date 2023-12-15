@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
         # redirect_to login_path, notice: message
         # notice: message
 
-        render json: {status: 500}
+        render json: {error: message}, status: 401
     end
   end
 

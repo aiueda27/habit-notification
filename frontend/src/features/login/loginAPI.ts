@@ -4,7 +4,6 @@ const API_URL = 'http://localhost:3001'
 
 export const findUser = async (payload: LoginData) => {
   const user = payload
-  console.log('user :>> ', user)
   return fetch(`${API_URL}/login`, {
     method: 'POST',
     headers: {
@@ -14,9 +13,18 @@ export const findUser = async (payload: LoginData) => {
       ...user,
     }),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Authentication failed')
+      }
+
+      return response.json()
+    })
     .catch((error) => {
       console.log('error :>> ', error)
+      alert(
+        'your username and password are incorrect.\nInput\nusername: ai\npassword: 123'
+      )
       return {}
     })
 }
