@@ -1,24 +1,59 @@
-# README
+# Habit Notification
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## このリポジトリについて
 
-Things you may want to cover:
+サーバーベースのリポジトリに、frontendディレクトリが入っているモノリポジトリになっています
 
-* Ruby version
+## サーバー側環境構築
 
-* System dependencies
+- 以下コマンドを実行してサーバー側に必要なパッケージをインストールする
 
-* Configuration
+```
+bundle install
+```
 
-* Database creation
+- 以下コマンドでデータベースを同期します
 
-* Database initialization
+```
+rails db:migrate
+```
 
-* How to run the test suite
+- 必要な環境構築をセット
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+- 立ち上げれば、localhost3001で起動しています。
+```
+rails s
+```
 
-* ...
+
+## フロント側環境構築
+
+- 以下コマンドを実行してフロントディレクトリに移動
+```
+cd frontend 
+```
+
+- 以下コマンドを実行してフロント側に必要なパッケージをインストールする
+```
+npm install
+```
+
+```
+npm run dev
+```
+
+- localhost3000にアクセス
+
+
+
+
+## 技術スタック
+
+- Ruby version 3.0.2
+- Rails version 7
+- React
+- Redux
+- TypeScript
+- Chakra Ui
+
