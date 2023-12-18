@@ -3,6 +3,7 @@
 ## このリポジトリについて
 
 サーバーベースのリポジトリに、frontendディレクトリが入っているモノリポジトリになっています
+この課題がトークンを用意していてAPIを叩くときにbearer tokenで渡す予定だったが、すでに認証部分を実装してしまったため一旦認証機能追加でフロントでトークンを保存するようになってます。
 
 ## サーバー側環境構築
 
@@ -47,6 +48,17 @@ npm run dev
 
 
 
+## アプリの使い方
+
+1、ログインID、パスワードを入力して(name: ‘ai’,  password: '123')ログイン
+2、習慣化したいことを作成、編集、削除
+3、slack通知（rakeタスク起動）
+```
+rails habit_notifier:habits
+```
+4、slackに通知が来ていることを確認してください
+
+
 
 ## 技術スタック
 
@@ -56,4 +68,16 @@ npm run dev
 - Redux
 - TypeScript
 - Chakra Ui
+
+
+## 実装しきれなかったこと
+TODOに一部残してありますが、こちらにも記録しておきます
+
+- Validation
+- Type
+- showpassword function in login
+- Import整形ライブラリ追加
+- Type
+- Test (factory-bot 使用）
+  など
 
