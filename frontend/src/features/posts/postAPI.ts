@@ -28,7 +28,13 @@ export const createPost = async (payload: PostFormData) => {
       post,
     }),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok')
+      }
+
+      return response.json()
+    })
     .catch((error) => {
       console.log('error :>> ', error)
       return {} as PostsState
