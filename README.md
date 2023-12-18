@@ -50,13 +50,13 @@ npm run dev
 
 ## アプリの使い方
 
-1、ログインID、パスワードを入力して(name: ‘ai’,  password: '123')ログイン
-2、習慣化したいことを作成、編集、削除
-3、slack通知（rakeタスク起動）
+- ログインID、パスワードを入力して(name: ‘ai’,  password: '123')ログイン
+- 習慣化したいことを作成、編集、削除
+- slack通知（rakeタスク起動）
 ```
 rails habit_notifier:habits
 ```
-4、slackに通知が来ていることを確認してください
+- slackに通知が来ていることを確認してください
 
 
 
