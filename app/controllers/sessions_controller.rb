@@ -9,8 +9,6 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:username])
 
     if !!@user && passwords_match?(@user.password, params[:password])
-        logger.debug "********* success *******"
-
         # Generate a token (replace this with your token generation logic)
         token = generate_token(@user)
 
@@ -21,7 +19,6 @@ class SessionsController < ApplicationController
         render json: { token: token, user_id: @user.id}, status: 200
 
       else
-        logger.debug "********* error *******"
         message = "Make sure your username and password are correct"
         # redirect_to login_path, notice: message
         # notice: message
