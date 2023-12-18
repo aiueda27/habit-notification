@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { findUserAsync } from './LoginSlice'
 import { AppDispatch } from '../../app/store'
+import { Button, Flex, FormControl, FormLabel, Input } from '@chakra-ui/react'
 
 function LoginForm() {
   const dispatch = useDispatch<AppDispatch>()
@@ -26,21 +27,39 @@ function LoginForm() {
 
   return (
     <form id="userForm">
-      <input
-        type="text"
-        name="username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        name="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit" form="userForm" onClick={(e) => handleSubmit(e)}>
-        Login
-      </button>
+      <Flex direction="column" gap={5} w={{ base: '90%', md: '40%' }} mx="auto">
+        <FormControl>
+          <FormLabel>User name</FormLabel>
+          <Input
+            type="text"
+            name="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </FormControl>
+
+        {/* TODO: Add show password function */}
+        <FormControl>
+          <FormLabel>Password</FormLabel>
+          <Input
+            type="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </FormControl>
+
+        <Button
+          layerStyle="gradientBg"
+          color="white"
+          _hover={{ opacity: 0.5 }}
+          type="submit"
+          form="userForm"
+          onClick={(e) => handleSubmit(e)}
+        >
+          Login
+        </Button>
+      </Flex>
     </form>
   )
 }

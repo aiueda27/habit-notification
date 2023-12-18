@@ -6,6 +6,8 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import './index.css'
 import { ChakraProvider } from '@chakra-ui/react'
+import { theme } from './utils/theme'
+import Layout from './features/layout/Layout'
 
 const container = document.getElementById('root')!
 const root = createRoot(container)
@@ -13,8 +15,10 @@ const root = createRoot(container)
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ChakraProvider>
-        <App />
+      <ChakraProvider theme={theme}>
+        <Layout>
+          <App />
+        </Layout>
       </ChakraProvider>
     </Provider>
   </React.StrictMode>

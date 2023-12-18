@@ -10,7 +10,8 @@ import {
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../app/store'
 import Post from './Post'
-import PostForm from './PostForm'
+import PostForm, { FormData } from './PostForm'
+import { Box, Flex, Heading, List, Text } from '@chakra-ui/react'
 
 function Posts() {
   const posts = useAppSelector(selectPosts)
@@ -32,38 +33,58 @@ function Posts() {
     }
   }
 
-  const submitEdit = (formData: any) => {
+  const submitEdit = (formData: FormData) => {
+    const { title, body } = formData.post
+    if (!title || !body) {
+      // TODO: Add Validation
+      alert('Please make sure to fill the inputs')
+      return
+    }
     dispatch(updatePostAsync(formData))
     toggleEditForm(0)
   }
 
   return (
-    <div>
-      <h1>Posts</h1>
+    <Box>
+      <Heading as="h1" size="4xl" layerStyle="gradientBg" bgClip="text">
+        Habit List
+      </Heading>
+      <Text color="brand.100" mb={10}>
+        App to manage your habit and notify on slack
+      </Text>
       {status !== Statuses.UpToDate ? (
-        <div>{status}</div>
+        <Box>{status}</Box>
       ) : (
-        <div>
-          <h3>{status}</h3>
+        <Flex
+          direction="column"
+          gap={12}
+          bg="brand.light"
+          w="90%"
+          borderRadius="lg"
+          mx="auto"
+          px="8px"
+          py="40px"
+        >
           <PostForm />
-          {posts &&
-            posts.length > 0 &&
-            posts.map((post) => {
-              return (
-                <div key={post.id}>
+          <List spacing={5}>
+            {posts &&
+              posts.length > 0 &&
+              posts.map((post) => {
+                return (
                   <Post
+                    key={post.id}
                     dispatch={dispatch}
                     post={post}
                     toggleEditForm={toggleEditForm}
                     postToEdit={postToEdit}
                     submitEdit={submitEdit}
                   />
-                </div>
-              )
-            })}
-        </div>
+                )
+              })}
+          </List>
+        </Flex>
       )}
-    </div>
+    </Box>
   )
 }
 

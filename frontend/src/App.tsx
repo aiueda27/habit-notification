@@ -3,7 +3,6 @@ import Posts from './features/posts/Posts'
 import LoginForm from './features/login/LoginForm'
 import { useAppSelector } from './app/hooks'
 import { selectUser } from './features/login/LoginSlice'
-import { useEffect, useState } from 'react'
 
 function App() {
   // TODO: remove accesss token with hard code for testing purpose.

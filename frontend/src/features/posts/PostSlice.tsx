@@ -13,14 +13,14 @@ export enum Statuses {
 
 export interface PostFormData {
   post: {
-    id?: string
+    id?: number
     title?: string
     body?: string
   }
 }
 
 export interface PostState {
-  id?: number
+  id: number
   title?: string
   body?: string
   created_at?: any //TODO: fix type (date in rails)
