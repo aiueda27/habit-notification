@@ -74,7 +74,7 @@ rails habit_notifier:habits
 TODOに一部残してありますが、こちらにも記録しておきます
 
 - Validation
-- Type
+- axios
 - showpassword function in login
 - Import整形ライブラリ追加
 - Type
